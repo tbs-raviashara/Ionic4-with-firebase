@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title text-center>Login</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col size="12" size-md="6" offset-md="3" size-lg="6" offset-lg="3" size-xl="6" offset-xl="3">
+            <ion-card padding>
+                <form [formGroup]="loginForm">
+                    <ion-item>
+                        <ion-label position="floating">Email</ion-label>
+                        <ion-input type="email" name="email" formControlName="email"></ion-input>
+                    </ion-item>
+                    <div padding-left *ngIf="!loginForm.controls['email'].valid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+                        <div padding-left *ngIf="loginForm.controls['email'].hasError('required')">
+                            <ion-text color=danger>Email is required</ion-text>
+                        </div>
+                        <div padding-left *ngIf="loginForm.controls['email'].hasError('email')">
+                            <ion-text color=danger>Enter proper email address</ion-text>
+                        </div>
+                    </div>
+                    <ion-item>
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input type="password" name="password" formControlName="password"></ion-input>
+                    </ion-item>
+                    <div *ngIf="!loginForm.controls['password'].valid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+                        <div padding-left *ngIf="loginForm.controls['password'].hasError('required')">
+                            <ion-text color="danger">Password is required</ion-text>
+                        </div>
+                        <div padding-left *ngIf="loginForm.controls['password'].hasError('minlength')">
+                            <ion-text color="danger">Enter password at least 6 character</ion-text>
+                        </div>
+                    </div>
+                    <div text-center padding-vertical>
+                        <ion-button type="submit" [disabled]="!loginForm.valid" (click)="submitForm(loginForm)">Login</ion-button>
+                    </div>
+                </form>
+                <div text-center padding-vertical>
+                    <ion-button [routerLink]="['/signup']">Sign Up</ion-button>
+                </div>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-content>

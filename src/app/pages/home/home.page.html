@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title text-center>
+            Home
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button slot="icon-only" (click)="logout()">
+                <ion-icon name="power"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card padding text-center>
+        <h2>Welcome</h2>
+        <h4>{{userDetails?.email}}</h4>
+    </ion-card>
+</ion-content>

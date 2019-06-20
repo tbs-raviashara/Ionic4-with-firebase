@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button slot="start"></ion-back-button>
+        <ion-title text-center>Sign Up</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col>
+            <ion-card padding>
+                <form [formGroup]="signupForm">
+                    <ion-item>
+                        <ion-label position="floating">Email</ion-label>
+                        <ion-input type="email" name="email" formControlName="email"></ion-input>
+                    </ion-item>
+                    <div padding-left *ngIf="!signupForm.controls['email'].valid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">
+                        <div padding-left *ngIf="signupForm.controls['email'].hasError('required')">
+                            <ion-text color=danger>Email is required</ion-text>
+                        </div>
+                        <div padding-left *ngIf="signupForm.controls['email'].hasError('email')">
+                            <ion-text color=danger>Enter proper email address</ion-text>
+                        </div>
+                    </div>
+                    <ion-item>
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input type="password" name="password" formControlName="password"></ion-input>
+                    </ion-item>
+                    <div *ngIf="!signupForm.controls['password'].valid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)">
+                        <div padding-left *ngIf="signupForm.controls['password'].hasError('required')">
+                            <ion-text color="danger">Password is required</ion-text>
+                        </div>
+                        <div padding-left *ngIf="signupForm.controls['password'].hasError('minlength')">
+                            <ion-text color="danger">Enter password at least 6 character</ion-text>
+                        </div>
+                    </div>
+                    <ion-item>
+                        <ion-label position="floating">Confirm Password</ion-label>
+                        <ion-input type="password" name="confirmPassword" formControlName="confirmPassword"></ion-input>
+                    </ion-item>
+                    <div *ngIf="!signupForm.controls['confirmPassword'].valid && (signupForm.controls['confirmPassword'].dirty || signupForm.controls['confirmPassword'].touched)">
+                        <div padding-left *ngIf="signupForm.controls['confirmPassword'].hasError('required')">
+                            <ion-text color="danger">Confirm Password is required</ion-text>
+                        </div>
+                        <div padding-left *ngIf="signupForm.controls['confirmPassword'].hasError('minlength')">
+                            <ion-text color="danger">Enter password at least 6 character</ion-text>
+                        </div>
+                    </div>
+                    <div text-center padding-vertical>
+                        <ion-button type="submit" [disabled]="!signupForm.valid" (click)="submitForm(signupForm)">SignUp</ion-button>
+                    </div>
+                </form>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-content>
