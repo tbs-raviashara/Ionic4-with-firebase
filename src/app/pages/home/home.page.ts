@@ -1,6 +1,7 @@
+import { AddUserPage } from './../add-user/add-user.page';
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication/authentication.service';
-import { LoadingController, NavController } from '@ionic/angular';
+import { LoadingController, NavController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +13,19 @@ export class HomePage {
   constructor(
     public authService: AuthenticationService,
     public loader: LoadingController,
-    public navCtr: NavController
+    public navCtr: NavController,
+    public modalCtrl: ModalController
   ) { }
 
   ionViewWillEnter() {
-    this.loader.create({
-      message: 'Please wait',
-      duration: 4000
-    }).then((showLoader: any) => {
-      showLoader.present();
+  }
+
+  openadduserModal() {
+    this.modalCtrl.create({
+      component: AddUserPage
+    }).then((modal: any) => {
+      modal.present();
     });
-    this.userDetails = this.authService.userDetails();
   }
 
   logout() {
