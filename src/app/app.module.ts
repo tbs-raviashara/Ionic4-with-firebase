@@ -11,9 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthenticationService } from './services/authentication/authentication.service';
-import * as firebase from 'firebase';
 
+/** Services */
+import { AuthenticationService } from './services/authentication/authentication.service';
+import { CRUDServiceService } from './services/crud/crudservice.service';
+
+import * as firebase from 'firebase';
+import { AddUserPageModule } from './pages/add-user/add-user.module';
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
@@ -24,12 +28,14 @@ firebase.initializeApp(environment.firebase);
     ReactiveFormsModule,
     AngularFireAuthModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    AddUserPageModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AuthenticationService,
+    CRUDServiceService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

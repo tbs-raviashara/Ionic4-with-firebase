@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button slot="icon-only" (click)="closeModal()">
+                <ion-icon name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title text-center>Add User</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col>
+            <ion-card padding>
+                <ion-item lines="none">
+                    <ion-label position="stacked">First Name</ion-label>
+                    <ion-input name="fname"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label position="stacked">Last Name</ion-label>
+                    <ion-input name="lname"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label position="stacked">Email</ion-label>
+                    <ion-input name="email"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label>DOB</ion-label>
+                    <ion-datetime display-format="MM/DD/YYYY" picker-format="MM/DD/YYYY" [max]="maxDate"></ion-datetime>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label>Gender</ion-label>
+                    <ion-select placeholder="Select Gender" okText="Okay" cancelText="Dismiss">
+                        <ion-select-option value="f">Female</ion-select-option>
+                        <ion-select-option value="m">Male</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-content>
