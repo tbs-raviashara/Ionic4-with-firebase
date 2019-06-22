@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { AlertController, NavController, LoadingController } from '@ionic/angular';
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 import { Route } from '@angular/router';
@@ -21,22 +21,20 @@ export class SignupPage {
     this.signupForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
-    }, { validator: this.matchingPasswords('password', 'confirmPassword') });
+      confirmPassword: ['', Validators.required]
+    }, { validator: this.MatchPassword });
   }
 
-  matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+  MatchPassword(AC: AbstractControl) {
     // TODO maybe use this https://github.com/yuyang041060120/ng2-validation#notequalto-1
-    return (group: FormGroup): { [key: string]: any } => {
-      const password = group.controls[passwordKey];
-      const confirmPassword = group.controls[confirmPasswordKey];
+    const pswd = AC.get('password').value;
+    const confirmPswd = AC.get('confirmPassword').value;
 
-      if (password.value !== confirmPassword.value) {
-        return {
-          mismatchedPasswords: true
-        };
-      }
-    };
+    if (pswd !== confirmPswd) {
+      AC.get('confirmPassword').setErrors({ MatchPassword: true });
+    } else {
+      AC.get('confirmPassword').setErrors(null);
+    }
   }
 
   submitForm(val: any) {

@@ -42,8 +42,8 @@
                         <div padding-left *ngIf="signupForm.controls['confirmPassword'].hasError('required')">
                             <ion-text color="danger">Confirm Password is required</ion-text>
                         </div>
-                        <div padding-left *ngIf="signupForm.controls['confirmPassword'].hasError('minlength')">
-                            <ion-text color="danger">Enter password at least 6 character</ion-text>
+                        <div padding-left *ngIf="signupForm.controls['confirmPassword'].errors?.MatchPassword">
+                            <ion-text color="danger">Password not match</ion-text>
                         </div>
                     </div>
                     <div text-center padding-vertical>
