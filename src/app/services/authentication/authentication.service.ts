@@ -8,6 +8,10 @@ export class AuthenticationService {
 
   constructor() { }
 
+  /**
+   * 
+   * @param value Register Form Data
+   */
   registerUser(value: any) {
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
@@ -17,6 +21,10 @@ export class AuthenticationService {
     });
   }
 
+  /**
+   * 
+   * @param value Login Form Data
+   */
   loginUser(value: any) {
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
