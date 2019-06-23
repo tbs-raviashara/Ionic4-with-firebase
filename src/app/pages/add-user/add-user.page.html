@@ -5,7 +5,12 @@
                 <ion-icon name="close"></ion-icon>
             </ion-button>
         </ion-buttons>
-        <ion-title text-center>Add User</ion-title>
+        <ion-title text-center>{{title}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button [disabled]="!addForm.valid" slot="icon-only" (click)="submitForm(addForm)">
+                <ion-icon name="add"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -13,29 +18,70 @@
     <ion-row>
         <ion-col>
             <ion-card padding>
-                <ion-item lines="none">
-                    <ion-label position="stacked">First Name</ion-label>
-                    <ion-input name="fname"></ion-input>
-                </ion-item>
-                <ion-item lines="none">
-                    <ion-label position="stacked">Last Name</ion-label>
-                    <ion-input name="lname"></ion-input>
-                </ion-item>
-                <ion-item lines="none">
-                    <ion-label position="stacked">Email</ion-label>
-                    <ion-input name="email"></ion-input>
-                </ion-item>
-                <ion-item lines="none">
-                    <ion-label>DOB</ion-label>
-                    <ion-datetime display-format="MM/DD/YYYY" picker-format="MM/DD/YYYY" [max]="maxDate"></ion-datetime>
-                </ion-item>
-                <ion-item lines="none">
-                    <ion-label>Gender</ion-label>
-                    <ion-select placeholder="Select Gender" okText="Okay" cancelText="Dismiss">
-                        <ion-select-option value="f">Female</ion-select-option>
-                        <ion-select-option value="m">Male</ion-select-option>
-                    </ion-select>
-                </ion-item>
+                <form [formGroup]="addForm">
+                    <ion-item lines="none" padding-bottom>
+                        <ion-label position="stacked">First Name</ion-label>
+                        <ion-input name="fname" formControlName="fname"></ion-input>
+                    </ion-item>
+                    <div
+                        *ngIf="!addForm.controls['fname'].valid && (addForm.controls['fname'].dirty || addForm.controls['fname'].touched)">
+                        <div *ngIf="addForm.controls['fname'].hasError('required')">
+                            <ion-text color="danger">First name is required</ion-text>
+                        </div>
+                    </div>
+
+                    <ion-item lines="none" padding-bottom>
+                        <ion-label position="stacked">Last Name</ion-label>
+                        <ion-input name="lname" formControlName="lname"></ion-input>
+                    </ion-item>
+                    <div
+                        *ngIf="!addForm.controls['lname'].valid && (addForm.controls['lname'].dirty || addForm.controls['lname'].touched)">
+                        <div *ngIf="addForm.controls['lname'].hasError('required')">
+                            <ion-text color="danger">Last name is required</ion-text>
+                        </div>
+                    </div>
+
+                    <ion-item lines="none" padding-bottom>
+                        <ion-label position="stacked">Email</ion-label>
+                        <ion-input name="email" formControlName="email"></ion-input>
+                    </ion-item>
+                    <div
+                        *ngIf="!addForm.controls['email'].valid && (addForm.controls['email'].dirty || addForm.controls['email'].touched)">
+                        <div *ngIf="addForm.controls['email'].hasError('required')">
+                            <ion-text color="danger">Email is required</ion-text>
+                        </div>
+                        <div *ngIf="addForm.controls['email'].hasError('email')">
+                            <ion-text color="danger">Enter valid email address</ion-text>
+                        </div>
+                    </div>
+
+                    <ion-item lines="none" padding-bottom>
+                        <ion-label>DOB</ion-label>
+                        <ion-datetime name="dob" formControlName="dob" displayFormat="MM/DD/YYYY" [max]="maxDate">
+                        </ion-datetime>
+                    </ion-item>
+                    <div
+                        *ngIf="!addForm.controls['dob'].valid && (addForm.controls['dob'].dirty || addForm.controls['dob'].touched)">
+                        <div *ngIf="addForm.controls['dob'].hasError('required')">
+                            <ion-text color="danger">Date of birth is required</ion-text>
+                        </div>
+                    </div>
+
+                    <ion-item lines="none" padding-bottom>
+                        <ion-label>Gender</ion-label>
+                        <ion-select name="gender" formControlName="gender" placeholder="Select Gender" okText="Okay"
+                            cancelText="Dismiss">
+                            <ion-select-option value="Female">Female</ion-select-option>
+                            <ion-select-option value="Male">Male</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <div
+                        *ngIf="!addForm.controls['gender'].valid && (addForm.controls['gender'].dirty || addForm.controls['gender'].touched)">
+                        <div *ngIf="addForm.controls['gender'].hasError('required')">
+                            <ion-text color="danger">Gender is required</ion-text>
+                        </div>
+                    </div>
+                </form>
             </ion-card>
         </ion-col>
     </ion-row>
