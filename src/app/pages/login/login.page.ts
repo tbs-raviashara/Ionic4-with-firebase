@@ -23,6 +23,10 @@ export class LoginPage {
     });
   }
 
+  /**
+   * 
+   * @param val Login Form Data 
+   */
   submitForm(val: any) {
     this.loader.create({
       message: 'Please wait...',

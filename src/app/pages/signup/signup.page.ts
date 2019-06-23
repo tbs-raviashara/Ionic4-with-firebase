@@ -25,8 +25,12 @@ export class SignupPage {
     }, { validator: this.MatchPassword });
   }
 
+  /**
+   * 
+   * @param AC Form Data
+   * Check Password and Confirm Password
+   */
   MatchPassword(AC: AbstractControl) {
-    // TODO maybe use this https://github.com/yuyang041060120/ng2-validation#notequalto-1
     const pswd = AC.get('password').value;
     const confirmPswd = AC.get('confirmPassword').value;
 
@@ -37,6 +41,10 @@ export class SignupPage {
     }
   }
 
+  /**
+   * 
+   * @param val Login Form Data
+   */
   submitForm(val: any) {
     if (val.value.password !== val.value.confirmPassword) {
       this.alertCtrl.create({
