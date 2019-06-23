@@ -11,6 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 /** Services */
 import { AuthenticationService } from './services/authentication/authentication.service';
@@ -18,6 +21,7 @@ import { CRUDServiceService } from './services/crud/crudservice.service';
 
 import * as firebase from 'firebase';
 import { AddUserPageModule } from './pages/add-user/add-user.module';
+import { AuthGaurdService } from './services/authGaurd/auth-gaurd.service';
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
@@ -27,6 +31,9 @@ firebase.initializeApp(environment.firebase);
     BrowserModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     AddUserPageModule
@@ -36,6 +43,7 @@ firebase.initializeApp(environment.firebase);
     SplashScreen,
     AuthenticationService,
     CRUDServiceService,
+    AuthGaurdService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
