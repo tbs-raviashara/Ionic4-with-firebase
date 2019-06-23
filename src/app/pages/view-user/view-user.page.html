@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button slot="start"></ion-back-button>
+        <ion-title text-center>User Details</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card padding>
+        <ion-card-content>
+            <h1 padding-bottom>{{userData?.fname}} {{userData?.lname}}</h1>
+            <h3 padding-bottom>Gender: {{userData?.gender}}</h3>
+            <h3>DOB: {{userData?.dob}}</h3>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
