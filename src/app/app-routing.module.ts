@@ -16,8 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: './pages/login/login.module#LoginPageModule',
-    
+    loadChildren: './pages/login/login.module#LoginPageModule'
   },
   {
     path: 'signup',
@@ -25,11 +24,13 @@ const routes: Routes = [
   },
   {
     path: 'add-user',
-    loadChildren: './pages/add-user/add-user.module#AddUserPageModule'
+    loadChildren: './pages/add-user/add-user.module#AddUserPageModule',
+    canActivate: [AuthGaurdService]
   },
   {
     path: 'view-user',
-    loadChildren: './pages/view-user/view-user.module#ViewUserPageModule'
+    loadChildren: './pages/view-user/view-user.module#ViewUserPageModule',
+    canActivate: [AuthGaurdService]
   }
 ];
 
