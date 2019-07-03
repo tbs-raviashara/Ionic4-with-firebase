@@ -1,5 +1,5 @@
-<ion-header>
-    <ion-toolbar>
+<ion-header mode="ios">
+    <ion-toolbar mode="ios" color="primary">
         <ion-buttons slot="start">
             <ion-button slot="icon-only" (click)="closeModal()">
                 <ion-icon name="close"></ion-icon>
@@ -23,8 +23,7 @@
                         <ion-label position="stacked">First Name</ion-label>
                         <ion-input name="fname" formControlName="fname"></ion-input>
                     </ion-item>
-                    <div
-                        *ngIf="!addForm.controls['fname'].valid && (addForm.controls['fname'].dirty || addForm.controls['fname'].touched)">
+                    <div *ngIf="!addForm.controls['fname'].valid && (addForm.controls['fname'].dirty || addForm.controls['fname'].touched)">
                         <div *ngIf="addForm.controls['fname'].hasError('required')">
                             <ion-text color="danger">First name is required</ion-text>
                         </div>
@@ -34,8 +33,7 @@
                         <ion-label position="stacked">Last Name</ion-label>
                         <ion-input name="lname" formControlName="lname"></ion-input>
                     </ion-item>
-                    <div
-                        *ngIf="!addForm.controls['lname'].valid && (addForm.controls['lname'].dirty || addForm.controls['lname'].touched)">
+                    <div *ngIf="!addForm.controls['lname'].valid && (addForm.controls['lname'].dirty || addForm.controls['lname'].touched)">
                         <div *ngIf="addForm.controls['lname'].hasError('required')">
                             <ion-text color="danger">Last name is required</ion-text>
                         </div>
@@ -45,8 +43,7 @@
                         <ion-label position="stacked">Email</ion-label>
                         <ion-input name="email" formControlName="email"></ion-input>
                     </ion-item>
-                    <div
-                        *ngIf="!addForm.controls['email'].valid && (addForm.controls['email'].dirty || addForm.controls['email'].touched)">
+                    <div *ngIf="!addForm.controls['email'].valid && (addForm.controls['email'].dirty || addForm.controls['email'].touched)">
                         <div *ngIf="addForm.controls['email'].hasError('required')">
                             <ion-text color="danger">Email is required</ion-text>
                         </div>
@@ -60,8 +57,7 @@
                         <ion-datetime name="dob" formControlName="dob" displayFormat="MM/DD/YYYY" [max]="maxDate">
                         </ion-datetime>
                     </ion-item>
-                    <div
-                        *ngIf="!addForm.controls['dob'].valid && (addForm.controls['dob'].dirty || addForm.controls['dob'].touched)">
+                    <div *ngIf="!addForm.controls['dob'].valid && (addForm.controls['dob'].dirty || addForm.controls['dob'].touched)">
                         <div *ngIf="addForm.controls['dob'].hasError('required')">
                             <ion-text color="danger">Date of birth is required</ion-text>
                         </div>
@@ -69,14 +65,12 @@
 
                     <ion-item lines="none" padding-bottom>
                         <ion-label>Gender</ion-label>
-                        <ion-select name="gender" formControlName="gender" placeholder="Select Gender" okText="Okay"
-                            cancelText="Dismiss">
+                        <ion-select name="gender" formControlName="gender" placeholder="Select Gender" okText="Okay" cancelText="Dismiss">
                             <ion-select-option value="Female">Female</ion-select-option>
                             <ion-select-option value="Male">Male</ion-select-option>
                         </ion-select>
                     </ion-item>
-                    <div
-                        *ngIf="!addForm.controls['gender'].valid && (addForm.controls['gender'].dirty || addForm.controls['gender'].touched)">
+                    <div *ngIf="!addForm.controls['gender'].valid && (addForm.controls['gender'].dirty || addForm.controls['gender'].touched)">
                         <div *ngIf="addForm.controls['gender'].hasError('required')">
                             <ion-text color="danger">Gender is required</ion-text>
                         </div>

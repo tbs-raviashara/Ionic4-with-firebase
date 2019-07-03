@@ -1,6 +1,6 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title text-center>Login</ion-title>
+<ion-header mode="ios">
+    <ion-toolbar mode="ios" color="primary">
+        <ion-title>Login</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -9,7 +9,7 @@
         <ion-col size="12" size-md="6" offset-md="3" size-lg="6" offset-lg="3" size-xl="6" offset-xl="3">
             <ion-card padding>
                 <form [formGroup]="loginForm">
-                    <ion-item>
+                    <ion-item no-padding>
                         <ion-label position="floating">Email</ion-label>
                         <ion-input type="email" name="email" formControlName="email"></ion-input>
                     </ion-item>
@@ -21,7 +21,7 @@
                             <ion-text color=danger>Enter proper email address</ion-text>
                         </div>
                     </div>
-                    <ion-item>
+                    <ion-item no-padding>
                         <ion-label position="floating">Password</ion-label>
                         <ion-input type="password" name="password" formControlName="password"></ion-input>
                     </ion-item>
