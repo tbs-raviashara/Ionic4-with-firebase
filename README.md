@@ -3,6 +3,10 @@
 Forms with validation
 1) Login
 2) Signup
+3) Add Record
+4) Edit Record
+5) Delete Record
+6) View Record
 
 ## INSTALL IONIC USING CLI
 
@@ -12,7 +16,10 @@ Forms with validation
 
 <img src="src/assets/screenshots/Login.png" width="210"/>&nbsp;
 <img src="src/assets/screenshots/Signup.png" width="210"/>&nbsp;
-<img src="src/assets/screenshots/Home.png" width="210"/>
+<img src="src/assets/screenshots/Home.png" width="210"/>&nbsp;
+<img src="src/assets/screenshots/Add.png" width="210"/>&nbsp;
+<img src="src/assets/screenshots/View.png" width="210"/>
+
 ## OPEN PROJECT ON BROWSER
 
 ```
