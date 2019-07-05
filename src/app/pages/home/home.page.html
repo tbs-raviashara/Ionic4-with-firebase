@@ -18,7 +18,9 @@
         </ion-fab-button>
     </ion-fab>
     <div *ngIf="userDetails != undefined">
-        <h3>Users List</h3>
+        <h3>
+            <p padding-horizontal>Users List</p>
+        </h3>
         <ion-card *ngFor="let user of userDetails">
             <ion-list>
                 <ion-item-sliding>
